@@ -27,3 +27,15 @@ You would kick off the following command:
 * *-l*: Name (or 'tag') for the directory levels. In this example: state = level 1, county = level 2
 * *-p*: Optional password on the command line, otherwise you'll be prompted.
 * *-o*: Optional path for the file output (default: qumulo-data-by-directory.csv in the working directory)
+
+The output will be a csv (named: qumulo-data-by-directory.csv) with the following sample columns:
+
+| timestamp | directory_level | full_path | data_usage | file_count | directory_count |
+| --------- | --------------- | --------- | ---------- | ---------- | --------------- |
+| 2020-07-21 | state | /all-the-states/WA | 98304 | 2 | 4 |
+| 2020-07-21 | county | /all-the-states/WA/King | 0 | 0 | 1 |
+| 2020-07-21 | county | /all-the-states/WA/Pierce | 98304 | 2 | 1 |
+| 2020-07-21 | county | /all-the-states/WA/Snohomish | 0 | 0 | 1 |
+| 2020-07-21 | state | /all-the-states/CO | 98304 | 2 | 3 |
+| 2020-07-21 | county | /all-the-states/CO/Summit | 0 | 0 | 1 |
+| 2020-07-21 | county | /all-the-states/CO/Pierce | 98304 | 2 | 1 |
