@@ -7,7 +7,7 @@
 2. Install Python library requirements: `pip install -r requirements.txt`
 
 
-## Write multiple levels of filsystem tree capacity data to a csv
+## Write multiple levels of filesystem tree capacity data to a csv
 
 This script will take a start path and walk the tree below that path looking for directories. Each directory will be recorded with it's aggregate capacity below also recorded. Each level must have a name as well.
 
