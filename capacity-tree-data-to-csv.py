@@ -15,7 +15,7 @@ def get_subdirs(rc, path):
 
 def get_line(ts, typ, ent):
     line = "%(path)s,%(capacity_usage)s,%(num_files)s,%(num_directories)s" % ent
-    line = "%s,%s,%s\r\n" % (ts, typ, line)
+    line = "%s,%s,%s\n" % (ts, typ, line)
     return line
 
 def get_capacity_aggregates(rc, start_path, level_names, out_file_name):
@@ -24,7 +24,7 @@ def get_capacity_aggregates(rc, start_path, level_names, out_file_name):
     timestamp = datetime.now().strftime("%Y-%m-%d")
     level = 0
     fw = open(out_file_name, "w")
-    fw.write("timestamp,directory_level,full_path,capacity_usage,file_count,directory_count\r\n")
+    fw.write("timestamp,directory_level,full_path,capacity_usage,file_count,directory_count\n")
     dirs = [start_path]
     while level < len(level_names):
         next_dirs = []
