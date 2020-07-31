@@ -14,7 +14,7 @@ def get_subdirs(rc, path):
     return sorted(subdirs, key = lambda d : d['name'])
 
 def get_line(ts, typ, ent):
-    line = "%(path)s,%(data_usage)s,%(num_files)s,%(num_directories)s" % ent
+    line = "%(path)s,%(capacity_usage)s,%(num_files)s,%(num_directories)s" % ent
     line = "%s,%s,%s\r\n" % (ts, typ, line)
     return line
 
@@ -23,7 +23,7 @@ def get_capacity_aggregates(rc, start_path, level_names, out_file_name):
     timestamp = datetime.now().strftime("%Y-%m-%d")
     level = 0
     fw = open(out_file_name, "w")
-    fw.write("timestamp,directory_level,full_path,data_usage,file_count,directory_count\r\n")
+    fw.write("timestamp,directory_level,full_path,capacity_usage,file_count,directory_count\r\n")
     dirs = [start_path]
     while level < len(level_names):
         next_dirs = []
@@ -56,13 +56,13 @@ def main():
     creds = {"QHOST": args.s,
              "QUSER": args.u,
              "QPASS": args.p}
-    level_names = ['state', 'county']
+    level_names = []
 
     # initialize the REST client
     rc = RestClient(creds["QHOST"], 8000)
     rc.login(creds["QUSER"], creds["QPASS"])
 
-    get_capacity_aggregates(rc, args.d, level_names, args.o)
+    get_capacity_aggregates(rc, args.d, args.l, args.o)
     print("Created file: %s" % args.o)
 
 if __name__ == "__main__":
