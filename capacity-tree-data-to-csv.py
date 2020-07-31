@@ -18,8 +18,9 @@ def get_line(ts, typ, ent):
     line = "%s,%s,%s\r\n" % (ts, typ, line)
     return line
 
-
 def get_capacity_aggregates(rc, start_path, level_names, out_file_name):
+    if ',' in level_names[0]:
+        level_names = level_names[0].split(",")
     timestamp = datetime.now().strftime("%Y-%m-%d")
     level = 0
     fw = open(out_file_name, "w")
@@ -36,7 +37,6 @@ def get_capacity_aggregates(rc, start_path, level_names, out_file_name):
         level += 1
         dirs = next_dirs
     fw.close()
-
 
 def main():
     parser = argparse.ArgumentParser(
